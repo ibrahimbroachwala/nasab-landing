@@ -1,0 +1,59 @@
+/*
+ * Nasab design tokens — mirrors lib/styles/ in the Nasab Flutter app repo
+ * (ibrahimbroachwala/nasab, develop branch) exactly. Do not hand-pick new
+ * colors/spacing/radii here — pull from the app repo the same way this file
+ * was built. See ../PHASE0_FINDINGS.md for full sourcing notes.
+ *
+ * Fonts: load via Google Fonts, e.g.
+ *   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+ */
+
+:root {
+  /* Colors — lib/styles/app_colors.dart */
+  --color-background: #F8F5EF;      /* Warm Ivory — page background */
+  --color-vintage-white: #FAF7F2;   /* Vintage White — input fields, text-on-dark, photo-frame margin */
+  --color-primary: #4B3621;         /* Deep Heritage Brown — headings, primary buttons, brand */
+  --color-secondary: #5E4630;       /* Dark Walnut — body text */
+  --color-accent: #B58A4A;          /* Antique Gold — CTAs on dark surfaces, focus/outline */
+  --color-success: #687864;         /* Olive Green */
+  --color-timeline-accent: #6F3B3B; /* Muted Burgundy — timeline accent */
+  --color-card-surface: #EFE6D8;    /* Paper Beige — card background */
+  --color-divider: #D7CEC3;         /* Soft Gray Brown — dividers / borders */
+  --color-error: #B3261E;
+  --color-male: #5B7A9D;            /* Dusty Blue */
+  --color-female: #C77B93;          /* Dusty Rose */
+
+  /* Typography — lib/styles/app_text_styles.dart (via google_fonts) */
+  --font-heading: 'Fraunces', serif;   /* headings: 32/600, 24/600, 18/600 in-app */
+  --font-body: 'Inter', sans-serif;    /* body: 16/400, 14/400, 12/400 in-app, color secondary */
+  --font-caption: 'Lora', serif;       /* captions/secondary emphasis: 12px italic, color secondary */
+
+  /* Spacing — 8pt grid, lib/styles/app_spacing.dart */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  /* Radius — lib/styles/app_radii.dart
+     NOTE: the app's own doc-comment says "18-24px everywhere" but the actual
+     shipped constant is 12px (large). Code is source of truth; using 12px
+     here to match what's actually rendered in the app. */
+  --radius-small: 4px;
+  --radius-large: 12px;
+  --radius-circle: 32px;
+
+  /* Shadows — inlined per-widget in the app (no shared app_shadows.dart) */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.08);                 /* CardThemeData, elevation 1 */
+  --shadow-photo-frame: 0 2px 4px rgba(0, 0, 0, 0.12);          /* FramedMediaBox, +3px vintage-white margin */
+  --shadow-memory-card: 0 3px 8px rgba(0, 0, 0, 0.08);          /* memory_card.dart */
+
+  /* Motion — lib/styles/app_motion.dart */
+  --motion-fast: 150ms;
+  --motion-medium: 300ms;
+  --motion-slow: 600ms;
+  --motion-stagger-step: 50ms;
+  --ease-entrance: cubic-bezier(0.215, 0.61, 0.355, 1);  /* easeOutCubic */
+  --ease-standard: ease-in-out;                          /* easeInOut */
+}
