@@ -9,11 +9,11 @@ document.getElementById('year').textContent = new Date().getFullYear();
  * anon public key (Project Settings → API) before going live — the anon
  * key is safe to ship client-side, RLS on the `waitlist` table only allows
  * inserts, nothing else. */
-const SUPABASE_URL = 'REPLACE_WITH_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'REPLACE_WITH_SUPABASE_ANON_KEY';
+const SUPABASE_URL = 'https://oajrqdeknihhyhzwnswj.supabase.co"';
+const SUPABASE_ANON_KEY = 'sb_publishable_TlUh-EwbEjekZMXYkiQPWQ_w939aGAU';
 const supabaseConfigured =
-  SUPABASE_URL !== 'REPLACE_WITH_SUPABASE_URL' &&
-  SUPABASE_ANON_KEY !== 'REPLACE_WITH_SUPABASE_ANON_KEY';
+  SUPABASE_URL !== 'https://oajrqdeknihhyhzwnswj.supabase.co"' &&
+  SUPABASE_ANON_KEY !== 'sb_publishable_TlUh-EwbEjekZMXYkiQPWQ_w939aGAU';
 // Guarded rather than a direct call: if the CDN script above fails to load
 // (ad-blocker, network hiccup), window.supabase won't exist — this must not
 // throw and take the rest of the page's JS down with it.
