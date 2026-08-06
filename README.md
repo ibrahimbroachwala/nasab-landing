@@ -16,11 +16,29 @@ roles), pricing table (Nasab Roots vs Nasab Heritage), waitlist form, and
 footer — all in `index.html` / `css/main.css` / `js/main.js`. Feature
 imagery uses real App Store marketing screenshots (`assets/screenshots/`).
 
-**Not yet wired up:** the waitlist form currently uses a stub submit handler
-(`submitWaitlistEntry` in `js/main.js`) — no real Supabase call yet. That's
-Phase 3, a separate follow-up task. Heritage plan pricing also isn't final —
-the pricing table shows "Pricing coming soon" until real amounts are
-confirmed from the RevenueCat dashboard.
+**Phase 3 complete:** the waitlist form (`submitWaitlistEntry` in
+`js/main.js`) now inserts into a `waitlist` table via the Supabase JS client,
+reusing the same Supabase project as the Nasab app — see
+[`supabase/waitlist_migration.sql`](supabase/waitlist_migration.sql) for the
+table + RLS policy (anon insert-only). Credentials are left as placeholders
+(`SUPABASE_URL` / `SUPABASE_ANON_KEY` in `js/main.js`) — see "Going live
+checklist" below. Heritage plan pricing still isn't final — the pricing
+table shows "Pricing coming soon" until real amounts are confirmed from the
+RevenueCat dashboard (Phase 2, deferred).
+
+## Going live checklist
+
+1. Run [`supabase/waitlist_migration.sql`](supabase/waitlist_migration.sql)
+   in the Supabase SQL editor of the app's existing Supabase project.
+2. Fill in `SUPABASE_URL` / `SUPABASE_ANON_KEY` near the top of
+   `js/main.js` with that project's URL and anon public key
+   (Project Settings → API). Never use the service role key here.
+3. Test the waitlist form end-to-end against the real table (including a
+   repeat signup, which should still show a friendly "already on the list"
+   message rather than an error).
+4. When ready, push `develop` → `release` — only `release` is connected to
+   GitHub Pages / the live `nasab.tappstudio.in` domain. Do this only on
+   explicit confirmation, never as a side effect of routine `develop` work.
 
 ## Structure
 

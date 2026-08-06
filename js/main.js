@@ -2,6 +2,30 @@
 
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/* ---------- Supabase client ----------
+ * Reuses the same Supabase project as the Nasab app (see
+ * supabase/waitlist_migration.sql for the table + RLS policy to run there
+ * first). Fill in the two placeholders below with that project's URL and
+ * anon public key (Project Settings → API) before going live — the anon
+ * key is safe to ship client-side, RLS on the `waitlist` table only allows
+ * inserts, nothing else. */
+const SUPABASE_URL = 'REPLACE_WITH_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'REPLACE_WITH_SUPABASE_ANON_KEY';
+const supabaseConfigured =
+  SUPABASE_URL !== 'REPLACE_WITH_SUPABASE_URL' &&
+  SUPABASE_ANON_KEY !== 'REPLACE_WITH_SUPABASE_ANON_KEY';
+// Guarded rather than a direct call: if the CDN script above fails to load
+// (ad-blocker, network hiccup), window.supabase won't exist — this must not
+// throw and take the rest of the page's JS down with it.
+let supabaseClient = null;
+if (supabaseConfigured && window.supabase) {
+  try {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  } catch (err) {
+    console.warn('Failed to initialize Supabase client:', err);
+  }
+}
+
 /* ---------- Waitlist form ---------- */
 (function () {
   const form = document.getElementById('waitlist-form');
@@ -19,15 +43,22 @@ document.getElementById('year').textContent = new Date().getFullYear();
   }
 
   /**
-   * Stub submit handler — simulates a successful signup without a network
-   * call. Phase 3 (Supabase integration) replaces the body of this function
-   * with a real `supabase.from('waitlist').insert({ email })` call, keeping
-   * the same success/duplicate/error branches below.
+   * Inserts the email into the `waitlist` table. A unique-constraint
+   * violation (Postgres error code 23505 — already on the list) is treated
+   * as a success, not an error, so repeat signups still see a friendly
+   * message rather than a failure.
    */
-  function submitWaitlistEntry(email) {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve({ ok: true }), 450);
-    });
+  async function submitWaitlistEntry(email) {
+    if (!supabaseClient) {
+      console.warn('Supabase is not configured — fill in SUPABASE_URL / SUPABASE_ANON_KEY in js/main.js.');
+      return { ok: false };
+    }
+    const { error } = await supabaseClient
+      .from('waitlist')
+      .insert({ email, source: 'landing_page' });
+    if (!error) return { ok: true };
+    if (error.code === '23505') return { ok: true, duplicate: true };
+    return { ok: false };
   }
 
   form.addEventListener('submit', async function (event) {
