@@ -122,13 +122,28 @@ section { padding: var(--space-xxl) 0; }
   padding-bottom: var(--space-sm);
 }
 
+.site-header .btn {
+  padding: var(--space-xs) var(--space-md);
+  font-size: 0.875rem;
+}
+
 .wordmark {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs, 0.5rem);
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 1.4rem;
   color: var(--color-primary);
   text-decoration: none;
   letter-spacing: 0.01em;
+}
+
+.wordmark-icon {
+  display: block;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
 }
 
 /* ---------- Hero ---------- */
@@ -238,8 +253,8 @@ section { padding: var(--space-xxl) 0; }
 
 .feature-row:last-child { border-bottom: none; }
 
-.feature-row.reverse .feature-media { order: 2; }
-.feature-row.reverse .feature-copy { order: 1; }
+.feature-row.reverse .feature-media { order: 1; }
+.feature-row.reverse .feature-copy { order: 2; }
 
 .feature-copy h3 {
   font-size: 1.6rem;
@@ -310,15 +325,15 @@ section { padding: var(--space-xxl) 0; }
 }
 
 .pricing-head img {
-  width: 76px;
-  height: 76px;
-  object-fit: cover;
+  display: block;
+  height: 64px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  object-position: top center;
   margin: 0 auto var(--space-sm);
-  border-radius: 50%;
-  border: 3px solid var(--color-vintage-white);
-  box-shadow: var(--shadow-photo-frame);
-  /* Same circular photo-frame language as the hero — real photographs now,
-     no baked-in text, so no dark backing chip needed. */
+  /* Flat gold emblem marks, not photographs — no photo-frame border,
+     circle crop, or shadow here; just the mark on its own. */
 }
 
 .pricing-head h3 { margin-bottom: 4px; }
@@ -443,6 +458,30 @@ section { padding: var(--space-xxl) 0; }
   animation-delay: var(--motion-stagger-step);
 }
 
+/* ---------- Scroll reveal ---------- */
+/* Applied to each feature row; JS toggles .is-visible as a row enters the
+   viewport (see js/main.js). Starts visible, and only switches to
+   hidden-until-scrolled-into-view once .js-reveal-ready is added, so
+   content never gets stuck hidden without JS or if the observer script
+   fails to run. */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.js-reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity var(--motion-slow) var(--ease-entrance),
+              transform var(--motion-slow) var(--ease-entrance);
+  transition-delay: 100ms;
+}
+
+.js-reveal-ready .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .hero .container { grid-template-columns: 1fr; }
@@ -471,4 +510,5 @@ section { padding: var(--space-xxl) 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .btn, .form-message { transition: none; }
+  .js-reveal-ready .reveal { opacity: 1; transform: none; }
 }
