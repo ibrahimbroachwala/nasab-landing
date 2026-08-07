@@ -143,6 +143,32 @@ section {
   background: rgba(201, 162, 94, 0.1);
 }
 
+.btn .btn-spinner {
+  display: none;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-top-color: transparent;
+  border-radius: 50%;
+  opacity: 0.85;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+.btn.is-loading .btn-spinner {
+  display: inline-block;
+}
+
+.btn.is-loading {
+  cursor: default;
+  opacity: 0.85;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;

@@ -151,7 +151,11 @@ if (supabaseConfigured && window.supabase) {
     }
 
     const submitBtn = form.querySelector('button[type="submit"]');
+    const submitLabel = submitBtn.querySelector('.btn-label');
+    const originalLabel = submitLabel ? submitLabel.textContent : submitBtn.textContent;
     submitBtn.disabled = true;
+    submitBtn.classList.add('is-loading');
+    if (submitLabel) submitLabel.textContent = 'Joining…';
 
     try {
       const result = await submitWaitlistEntry(email);
@@ -167,6 +171,8 @@ if (supabaseConfigured && window.supabase) {
       showMessage('Something went wrong — please try again in a moment.', 'error');
     } finally {
       submitBtn.disabled = false;
+      submitBtn.classList.remove('is-loading');
+      if (submitLabel) submitLabel.textContent = originalLabel;
     }
   });
 })();

@@ -476,7 +476,10 @@
 
           <label class="sr-only" for="email">Email address</label>
           <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
-          <button class="btn btn-primary" type="submit">Join the waitlist</button>
+          <button class="btn btn-primary" type="submit">
+            <span class="btn-spinner" aria-hidden="true"></span>
+            <span class="btn-label">Join the waitlist</span>
+          </button>
         </form>
         <p class="form-message" id="waitlist-message" role="status" aria-live="polite"></p>
       </div>
