@@ -337,6 +337,10 @@ section {
 }
 
 /* ---------- Feature showcase ---------- */
+.features {
+  background: var(--color-card-surface);
+}
+
 .features .section-intro {
   max-width: 640px;
   margin: 0 auto var(--space-xxl);

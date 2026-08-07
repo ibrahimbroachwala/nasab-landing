@@ -26,7 +26,7 @@
   --color-accent: #C9A25E;          /* Antique Gold, brightened for dark surfaces — CTAs, focus/outline */
   --color-success: #93AC8E;         /* Olive Green, lightened for contrast on dark */
   --color-timeline-accent: #6F3B3B; /* Muted Burgundy — timeline accent */
-  --color-card-surface: #120D09;    /* darker band background (positioning/pricing sections) */
+  --color-card-surface: #120D09;    /* darker band background (positioning/pricing/features sections) */
   --color-divider: #453A2C;         /* muted warm grey-brown — dividers / borders on dark */
   --color-error: #E5695F;           /* brightened for contrast on dark */
   --color-male: #5B7A9D;            /* Dusty Blue */
