@@ -6,9 +6,15 @@
  * No bright gradients, no glassmorphism, no stock "team" imagery.
  */
 
-*, *::before, *::after { box-sizing: border-box; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -21,7 +27,10 @@ body {
   overflow-x: hidden;
 }
 
-img { max-width: 100%; display: block; }
+img {
+  max-width: 100%;
+  display: block;
+}
 
 .container {
   width: 100%;
@@ -30,26 +39,38 @@ img { max-width: 100%; display: block; }
   padding: 0 var(--space-lg);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-heading);
-  color: var(--color-primary);
+  color: var(--color-heading);
   font-weight: 600;
   margin: 0;
   line-height: 1.2;
 }
 
-h2 { font-size: clamp(1.75rem, 3vw, 2.25rem); }
-h3 { font-size: 1.25rem; }
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
 
-em, .accent-italic {
+h3 {
+  font-size: 1.25rem;
+}
+
+em,
+.accent-italic {
   font-family: var(--font-caption);
   font-style: italic;
   color: var(--color-secondary);
 }
 
-p { margin: 0 0 var(--space-md); }
+p {
+  margin: 0 0 var(--space-md);
+}
 
-a { color: var(--color-primary); }
+a {
+  color: var(--color-link);
+}
 
 .sr-only {
   position: absolute;
@@ -68,7 +89,9 @@ a { color: var(--color-primary); }
   margin: 0 0 var(--space-sm);
 }
 
-section { padding: var(--space-xxl) 0; }
+section {
+  padding: var(--space-xxl) 0;
+}
 
 .divider {
   width: 48px;
@@ -93,31 +116,39 @@ section { padding: var(--space-xxl) 0; }
   cursor: pointer;
   text-decoration: none;
   transition: transform var(--motion-fast) var(--ease-standard),
-              background-color var(--motion-fast) var(--ease-standard),
-              opacity var(--motion-fast) var(--ease-standard);
+    background-color var(--motion-fast) var(--ease-standard),
+    opacity var(--motion-fast) var(--ease-standard);
 }
 
-.btn:active { transform: scale(0.98); }
+.btn:active {
+  transform: scale(0.98);
+}
 
 .btn-primary {
   background: var(--color-primary);
   color: var(--color-vintage-white);
 }
-.btn-primary:hover { background: #3c2c1a; }
+
+.btn-primary:hover {
+  background: #3c2c1a;
+}
 
 .btn-outline {
   background: transparent;
-  color: var(--color-primary);
+  color: var(--color-accent);
   border: 1.5px solid var(--color-accent);
 }
-.btn-outline:hover { background: rgba(181, 138, 74, 0.08); }
+
+.btn-outline:hover {
+  background: rgba(201, 162, 94, 0.1);
+}
 
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(248, 245, 239, 0.92);
+  background: rgba(26, 20, 16, 0.92);
   backdrop-filter: saturate(140%) blur(6px);
   border-bottom: 1px solid var(--color-divider);
 }
@@ -144,7 +175,7 @@ section { padding: var(--space-xxl) 0; }
   font-family: var(--font-heading);
   font-weight: 600;
   font-size: 1.4rem;
-  color: var(--color-primary);
+  color: var(--color-heading);
   text-decoration: none;
   letter-spacing: 0.01em;
 }
@@ -210,32 +241,52 @@ section { padding: var(--space-xxl) 0; }
   object-position: center 32%;
 }
 
-/* ---------- Positioning statement ---------- */
+/* ---------- Positioning statement ----------
+ * Full-bleed photo background (hand placing a polaroid into the album) with
+ * a JS-driven parallax drift — see the "Positioning parallax" block in
+ * js/main.js — and a dark scrim so the italic quote stays readable over it.
+ * .positioning-media is a sibling of .container, not nested inside it, so
+ * it can span edge-to-edge without fighting the container's max-width. */
 .positioning {
+  position: relative;
+  overflow: hidden;
+  min-height: clamp(420px, 60vw, 640px);
   background: var(--color-card-surface);
   border-top: 1px solid var(--color-divider);
   border-bottom: 1px solid var(--color-divider);
 }
 
-.positioning .container {
-  max-width: 920px;
-  display: grid;
-  grid-template-columns: 0.75fr 1.25fr;
-  gap: var(--space-xl);
-  align-items: center;
-  text-align: left;
+.positioning-media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 
-.positioning-media img {
-  display: block;
+.positioning-media-img {
+  position: absolute;
+  left: 0;
+  top: -15%;
   width: 100%;
-  max-width: 380px;
-  margin: 0 auto;
-  aspect-ratio: 4 / 3;
+  height: 130%;
   object-fit: cover;
-  border-radius: var(--radius-large);
-  box-shadow: var(--shadow-photo-frame);
-  border: 5px solid var(--color-vintage-white);
+  will-change: transform;
+}
+
+/* Scrim opacity is a UI necessity, not a brand color — kept as a literal
+   rather than a new token per css/tokens.css's "mirror the app repo" rule. */
+.positioning-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.positioning-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding-top: var(--space-xxl);
+  padding-bottom: var(--space-xxl);
+  text-align: center;
 }
 
 .positioning p {
@@ -243,10 +294,47 @@ section { padding: var(--space-xxl) 0; }
   font-style: italic;
   font-size: 1.3rem;
   line-height: 1.7;
-  color: var(--color-primary);
+  color: var(--color-heading);
 }
 
-.positioning p:last-child { margin-bottom: 0; }
+.positioning p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- How it works ---------- */
+.how-it-works .section-intro {
+  max-width: 640px;
+  margin: 0 auto var(--space-xxl);
+  text-align: center;
+}
+
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.how-it-works-step {
+  text-align: center;
+  padding: 0 var(--space-sm);
+}
+
+.how-it-works-number {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2.25rem, 3.5vw, 2.75rem);
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.how-it-works-step h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.how-it-works-step p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
 
 /* ---------- Feature showcase ---------- */
 .features .section-intro {
@@ -258,33 +346,41 @@ section { padding: var(--space-xxl) 0; }
 .feature-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "num media" "copy media";
-  grid-template-rows: auto 1fr;
+  grid-template-areas: "copy media";
   column-gap: var(--space-xl);
-  row-gap: var(--space-xs);
   align-items: center;
-  padding: var(--space-xl) 0;
-  border-bottom: 1px solid var(--color-divider);
+  padding: var(--space-sm) 0;
+  /* Lighter than --color-divider (#453A2C) — a subtler row separator than the
+     divider's usual job (card/table borders); rgba literal per this file's
+     "UI necessity, not a brand color" convention rather than a new token. */
+  border-bottom: 0.5px solid rgba(69, 58, 44, 0.5);
 }
 
-.feature-row:last-child { border-bottom: none; }
+.feature-row:last-child {
+  border-bottom: none;
+}
 
 .feature-row.reverse {
-  grid-template-areas: "media num" "media copy";
+  grid-template-areas: "media copy";
 }
 
 .feature-number {
-  grid-area: num;
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-size: clamp(4.5rem, 5vw, 5.75rem);
   line-height: 1;
   color: var(--color-secondary);
-  opacity: 0.3;
+  opacity: 0.15;
+  margin-bottom: var(--space-xs);
 }
 
-.feature-copy { grid-area: copy; }
-.feature-media { grid-area: media; }
+.feature-copy {
+  grid-area: copy;
+}
+
+.feature-media {
+  grid-area: media;
+}
 
 .feature-copy h3 {
   font-size: 1.6rem;
@@ -304,7 +400,6 @@ section { padding: var(--space-xxl) 0; }
 .feature-media img {
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-card);
-  border: 3px solid var(--color-vintage-white);
 }
 
 .feature-media.single img {
@@ -315,8 +410,58 @@ section { padding: var(--space-xxl) 0; }
   max-width: 220px;
 }
 
+/* ---------- Value props ---------- */
+.value-props .section-intro {
+  max-width: 640px;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.value-props-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.value-prop {
+  background: var(--color-card-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-large);
+  padding: var(--space-xl) var(--space-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.value-prop-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(201, 162, 94, 0.12);
+  color: var(--color-accent);
+  margin-bottom: var(--space-sm);
+}
+
+.value-prop-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.value-prop h3 {
+  font-size: 1.3rem;
+  margin-bottom: var(--space-sm);
+}
+
+.value-prop p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
 /* ---------- Pricing ---------- */
-.pricing { background: var(--color-card-surface); }
+.pricing {
+  background: var(--color-card-surface);
+}
 
 .pricing .section-intro {
   max-width: 640px;
@@ -347,11 +492,14 @@ section { padding: var(--space-xxl) 0; }
 .plan-card-head {
   text-align: center;
   padding: var(--space-lg) var(--space-md);
-  background: var(--color-primary);
+  /* Heritage-only darker brown, distinct from --color-primary now that
+     Roots reuses --color-primary below; not a design token since tokens.css
+     mirrors the app repo's palette 1:1. */
+  background: #2F2115;
 }
 
 .plan-card-head.roots {
-  background: var(--color-accent);
+  background: var(--color-primary);
 }
 
 .plan-card-head img {
@@ -369,7 +517,7 @@ section { padding: var(--space-xxl) 0; }
 
 .plan-card-head h3 {
   margin-bottom: 4px;
-  color: var(--color-background);
+  color: var(--color-vintage-white);
 }
 
 .plan-price {
@@ -379,13 +527,9 @@ section { padding: var(--space-xxl) 0; }
   font-size: 0.95rem;
 }
 
-/* Roots header background is accent, so the price text needs a different
-   color to stay visible against it (default .plan-price is accent-on-primary). */
-.plan-card-head.roots .plan-price {
-  color: var(--color-primary);
+.plan-features {
+  margin: 0;
 }
-
-.plan-features { margin: 0; }
 
 .plan-feature {
   display: flex;
@@ -396,11 +540,13 @@ section { padding: var(--space-xxl) 0; }
   border-bottom: 1px solid var(--color-divider);
 }
 
-.plan-feature:last-child { border-bottom: none; }
+.plan-feature:last-child {
+  border-bottom: none;
+}
 
 .plan-feature dt {
   font-weight: 500;
-  color: var(--color-primary);
+  color: var(--color-heading);
   font-size: 0.95rem;
 }
 
@@ -410,8 +556,15 @@ section { padding: var(--space-xxl) 0; }
   text-align: right;
 }
 
-.check { color: var(--color-success); font-weight: 600; }
-.cross { color: var(--color-divider); font-weight: 600; }
+.check {
+  color: var(--color-success);
+  font-weight: 600;
+}
+
+.cross {
+  color: var(--color-divider);
+  font-weight: 600;
+}
 
 .pricing-note {
   text-align: center;
@@ -422,10 +575,79 @@ section { padding: var(--space-xxl) 0; }
   margin-top: var(--space-md);
 }
 
-/* ---------- Waitlist ---------- */
-.waitlist { text-align: center; }
+/* ---------- FAQ ---------- */
+.faq .section-intro {
+  max-width: 640px;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
 
-.waitlist .container { max-width: 560px; }
+.faq-list {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.faq-item {
+  background: var(--color-card-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-large);
+  padding: var(--space-md) var(--space-lg);
+}
+
+/* Native <details>/<summary> — keyboard-operable and works without JS, per
+   the same "content never stuck without JS" principle as .reveal above. */
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-heading);
+  font-size: 1.05rem;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  flex-shrink: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--color-accent);
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  margin: var(--space-md) 0 0;
+  font-size: 0.98rem;
+}
+
+.faq-item p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Waitlist ---------- */
+.waitlist {
+  text-align: center;
+}
+
+.waitlist .container {
+  max-width: 560px;
+}
 
 .waitlist-form {
   display: flex;
@@ -443,7 +665,7 @@ section { padding: var(--space-xxl) 0; }
   background: var(--color-vintage-white);
   font-family: var(--font-body);
   font-size: 1rem;
-  color: var(--color-secondary);
+  color: var(--color-primary);
   outline: none;
   transition: border-color var(--motion-fast) var(--ease-standard);
 }
@@ -468,12 +690,21 @@ section { padding: var(--space-xxl) 0; }
   opacity: 0;
   transform: translateY(4px);
   transition: opacity var(--motion-medium) var(--ease-entrance),
-              transform var(--motion-medium) var(--ease-entrance);
+    transform var(--motion-medium) var(--ease-entrance);
 }
 
-.form-message.visible { opacity: 1; transform: translateY(0); }
-.form-message.success { color: var(--color-success); }
-.form-message.error { color: var(--color-error); }
+.form-message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-message.success {
+  color: var(--color-success);
+}
+
+.form-message.error {
+  color: var(--color-error);
+}
 
 /* ---------- Footer ---------- */
 .site-footer {
@@ -484,12 +715,17 @@ section { padding: var(--space-xxl) 0; }
   color: var(--color-secondary);
 }
 
-.site-footer a { text-decoration: none; }
-.site-footer a:hover { text-decoration: underline; }
+.site-footer a {
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  text-decoration: underline;
+}
 
 .footer-wordmark {
   font-family: var(--font-heading);
-  color: var(--color-primary);
+  color: var(--color-heading);
   font-size: 1.1rem;
   margin-bottom: var(--space-sm);
 }
@@ -498,20 +734,35 @@ section { padding: var(--space-xxl) 0; }
 /* CSS-only fade-in on load — no JS/IntersectionObserver dependency, so
    content is never stuck invisible if JS is slow, blocked, or absent. */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* The circular portrait fades and settles in from a slight scale, rather
    than sliding — reads like a photo materializing, not a UI panel. */
 @keyframes fade-in-scale {
-  from { opacity: 0; transform: scale(0.92); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .hero-copy {
   animation: fade-up var(--motion-slow) var(--ease-entrance) both;
 }
+
 .hero-media {
   animation: fade-in-scale var(--motion-slow) var(--ease-entrance) both;
   animation-delay: var(--motion-stagger-step);
@@ -532,7 +783,7 @@ section { padding: var(--space-xxl) 0; }
   opacity: 0;
   transform: translateY(24px);
   transition: opacity var(--motion-slow) var(--ease-entrance),
-              transform var(--motion-slow) var(--ease-entrance);
+    transform var(--motion-slow) var(--ease-entrance);
   transition-delay: 100ms;
 }
 
@@ -543,42 +794,111 @@ section { padding: var(--space-xxl) 0; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
-  .hero .container { grid-template-columns: 1fr; }
-  .hero-media { width: min(300px, 70%); margin: 0 auto; }
-  .positioning .container { grid-template-columns: 1fr; text-align: center; }
-  .positioning-media img { width: 100%; max-width: none; margin: 0 auto; }
-  .positioning p { text-align: center; }
+  .hero .container {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-media {
+    width: min(300px, 70%);
+    margin: 0 auto;
+  }
+
+  .positioning {
+    min-height: clamp(320px, 70vw, 480px);
+  }
+
+  .positioning-content {
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-xl);
+  }
+
   .feature-row,
   .feature-row.reverse {
     grid-template-columns: 1fr;
-    grid-template-areas: "copy" "num" "media";
+    grid-template-areas: "copy" "media";
     row-gap: var(--space-sm);
     text-align: center;
   }
-  .pricing-table { grid-template-columns: 1fr; }
+
+  .pricing-table {
+    grid-template-columns: 1fr;
+  }
+
+  .value-props-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-it-works-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
 }
 
 @media (max-width: 640px) {
-  section { padding: var(--space-xl) 0; }
-  .plan-feature { padding: var(--space-sm) var(--space-md); }
+  section {
+    padding: var(--space-xl) 0;
+  }
+
+  .plan-feature {
+    padding: var(--space-sm) var(--space-md);
+  }
+
   .plan-feature dt,
-  .plan-feature dd { font-size: 0.9rem; }
-  .positioning p { font-size: clamp(1.05rem, 4.5vw, 1.3rem); }
-  .site-header .btn { padding: var(--space-sm) var(--space-md); }
+  .plan-feature dd {
+    font-size: 0.9rem;
+  }
+
+  .positioning p {
+    font-size: clamp(1.05rem, 4.5vw, 1.3rem);
+  }
+
+  .site-header .btn {
+    padding: var(--space-sm) var(--space-md);
+  }
 }
 
 @media (max-width: 480px) {
+
   .hero-cta-row .btn,
-  .waitlist-form .btn { width: 100%; }
-  .hero-cta-row { flex-direction: column; }
-  .waitlist-form { flex-direction: column; }
-  .waitlist-form input[type="email"] { flex: 1 1 auto; }
-  .hero-media { width: min(240px, 75%); }
+  .waitlist-form .btn {
+    width: 100%;
+  }
+
+  .hero-cta-row {
+    flex-direction: column;
+  }
+
+  .waitlist-form {
+    flex-direction: column;
+  }
+
+  .waitlist-form input[type="email"] {
+    flex: 1 1 auto;
+  }
+
+  .hero-media {
+    width: min(240px, 75%);
+  }
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .reveal, .btn, .form-message { transition: none; }
-  .js-reveal-ready .reveal { opacity: 1; transform: none; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .btn,
+  .form-message {
+    transition: none;
+  }
+
+  .js-reveal-ready .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .positioning-media-img {
+    transform: none !important;
+  }
 }

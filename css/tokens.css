@@ -9,19 +9,30 @@
  */
 
 :root {
-  /* Colors — lib/styles/app_colors.dart */
-  --color-background: #F8F5EF;      /* Warm Ivory — page background */
-  --color-vintage-white: #FAF7F2;   /* Vintage White — input fields, text-on-dark, photo-frame margin */
-  --color-primary: #4B3621;         /* Deep Heritage Brown — headings, primary buttons, brand */
-  --color-secondary: #5E4630;       /* Dark Walnut — body text */
-  --color-accent: #B58A4A;          /* Antique Gold — CTAs on dark surfaces, focus/outline */
-  --color-success: #687864;         /* Olive Green */
+  /* Colors — lib/styles/app_colors.dart palette, remapped dark-by-default
+     for the landing page. --color-primary (Deep Heritage Brown) keeps its
+     original app value and its original *background* jobs (buttons, the
+     pricing-card head) unchanged — it stays a dark, branded surface either
+     way. Roles that used --color-primary as *text* (headings, links, the
+     wordmark, pricing labels) now read from --color-heading / --color-link
+     instead, since dark brown text on a dark page has no contrast. See
+     ../PHASE0_FINDINGS.md for the original light-theme sourcing notes. */
+  --color-background: #1A1410;      /* page background — near-black heritage brown */
+  --color-vintage-white: #FAF7F2;   /* unchanged: light surface for text-on-dark, input fields, photo-frame margin */
+  --color-primary: #4B3621;         /* unchanged: Deep Heritage Brown — button/pricing-head backgrounds only */
+  --color-heading: var(--color-vintage-white); /* headings, wordmark, footer wordmark, pricing labels */
+  --color-link: #C9A25E;            /* brighter antique gold — links, outline-button text on dark */
+  --color-secondary: #C9BDAC;       /* body text — warm light taupe, readable on dark bg */
+  --color-accent: #C9A25E;          /* Antique Gold, brightened for dark surfaces — CTAs, focus/outline */
+  --color-success: #93AC8E;         /* Olive Green, lightened for contrast on dark */
   --color-timeline-accent: #6F3B3B; /* Muted Burgundy — timeline accent */
-  --color-card-surface: #EFE6D8;    /* Paper Beige — card background */
-  --color-divider: #D7CEC3;         /* Soft Gray Brown — dividers / borders */
-  --color-error: #B3261E;
+  --color-card-surface: #120D09;    /* darker band background (positioning/pricing sections) */
+  --color-divider: #453A2C;         /* muted warm grey-brown — dividers / borders on dark */
+  --color-error: #E5695F;           /* brightened for contrast on dark */
   --color-male: #5B7A9D;            /* Dusty Blue */
   --color-female: #C77B93;          /* Dusty Rose */
+
+  color-scheme: dark;
 
   /* Typography — lib/styles/app_text_styles.dart (via google_fonts) */
   --font-heading: 'Fraunces', serif;   /* headings: 32/600, 24/600, 18/600 in-app */
