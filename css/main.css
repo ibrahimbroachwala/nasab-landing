@@ -194,6 +194,20 @@ section {
   font-size: 0.875rem;
 }
 
+.site-header-left {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
+.site-header-right {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+}
+
 .wordmark {
   display: flex;
   align-items: center;
@@ -211,6 +225,17 @@ section {
   width: 44px;
   height: 44px;
   border-radius: 10px;
+}
+
+.site-nav a {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  color: var(--color-link);
 }
 
 /* ---------- Hero ---------- */
@@ -435,6 +460,7 @@ section {
 }
 
 .feature-media img {
+  height: auto;
   border-radius: var(--radius-large);
   box-shadow: var(--shadow-card);
 }
@@ -899,6 +925,44 @@ section {
 .legal-content .table-scroll {
   overflow-x: auto;
   margin: 0 0 var(--space-lg);
+}
+
+/* ---------- Founder's note (letter format) ---------- */
+.letter-content {
+  max-width: 640px;
+}
+
+.letter-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.letter-salutation,
+.letter-signoff {
+  font-family: var(--font-caption);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--color-heading);
+}
+
+.letter-signoff {
+  margin-bottom: var(--space-sm);
+}
+
+.letter-signature {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: var(--color-heading);
+  line-height: 1.5;
+}
+
+.letter-signature span {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-style: normal;
+  color: var(--color-secondary);
+  margin-top: var(--space-xs);
 }
 
 .legal-content table {
