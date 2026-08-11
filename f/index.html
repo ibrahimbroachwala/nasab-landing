@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're invited — Nasab</title>
+  <meta name="description" content="You've been invited to join a family tree on Nasab. Download the app to accept your invite.">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://nasab.tappstudio.in/f/">
+  <meta name="theme-color" content="#4B3621">
+
+  <link rel="icon" type="image/png" href="../assets/brand/icon.png">
+  <link rel="apple-touch-icon" href="../assets/brand/icon.png">
+
+  <!-- Open Graph — generic (the shared short link itself carries the
+       family-specific preview via ChottuLink's socialTitle/socialDescription,
+       set when the link is created in the app; see InviteShareScreen). -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nasab">
+  <meta property="og:url" content="https://nasab.tappstudio.in/f/">
+  <meta property="og:title" content="You're invited to join a family on Nasab">
+  <meta property="og:description" content="Download Nasab to accept your family invite.">
+  <meta property="og:image" content="https://nasab.tappstudio.in/assets/brand/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Lora:ital@1&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/main.css">
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container">
+      <div class="site-header-left">
+        <a class="wordmark" href="/">
+          <picture>
+            <source srcset="../assets/brand/icon.webp" type="image/webp">
+            <img class="wordmark-icon" src="../assets/brand/icon.png" alt="" width="44" height="44">
+          </picture>Nasab</a>
+      </div>
+      <div class="site-header-right">
+        <a class="btn btn-outline" href="/#waitlist">Join the waitlist</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="invite-page">
+      <div class="container">
+        <div class="invite-card is-loading" id="invite-card">
+          <picture>
+            <source srcset="../assets/brand/icon.webp" type="image/webp">
+            <img class="invite-icon" src="../assets/brand/icon.png" alt="" width="72" height="72">
+          </picture>
+
+          <div class="invite-spinner" aria-hidden="true"></div>
+
+          <div class="invite-body-loaded">
+            <h1 id="invite-title">Loading your invite&hellip;</h1>
+            <p id="invite-body">Just a moment.</p>
+
+            <div class="invite-stores">
+              <!-- TODO: point at the real App Store / Play Store listing
+                   URLs once Nasab is published — see js/invite.js. -->
+              <a id="invite-app-store" class="btn btn-outline store-btn" href="#" aria-disabled="true">
+                <svg class="store-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v12" />
+                  <path d="m7 10 5 5 5-5" />
+                  <path d="M5 21h14" />
+                </svg>
+                <span class="store-btn-label">
+                  <small>Download on the</small>
+                  App Store
+                </span>
+              </a>
+              <a id="invite-play-store" class="btn btn-outline store-btn" href="#" aria-disabled="true">
+                <svg class="store-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3v12" />
+                  <path d="m7 10 5 5 5-5" />
+                  <path d="M5 21h14" />
+                </svg>
+                <span class="store-btn-label">
+                  <small>GET IT ON</small>
+                  Google Play
+                </span>
+              </a>
+            </div>
+
+            <a id="invite-open-app" class="invite-open-app legal-back" href="#" hidden>Already have the app? Open
+              Nasab &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-wordmark">Nasab</p>
+      <p><a href="mailto:tappstudio.in@gmail.com">tappstudio.in@gmail.com</a></p>
+      <p class="footer-links">
+        <a href="/privacy-policy/">Privacy Policy</a> &middot;
+        <a href="/terms/">Terms of Use</a> &middot;
+        <a href="/support/">Support</a>
+      </p>
+      <p>&copy; <span id="year"></span> Nasab. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/invite.js"></script>
+</body>
+
+</html>

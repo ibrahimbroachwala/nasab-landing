@@ -1172,3 +1172,102 @@ section {
     transform: none !important;
   }
 }
+
+/* ---------- Invite fallback page (/f/) ----------
+ * Shown when a ChottuLink invite short link (nasab.chottu.link/f/<code>)
+ * falls back to the browser because the app isn't installed. See
+ * js/invite.js — it swaps #invite-title/#invite-body's text in once the
+ * family name loads (or on error/expired/missing-code), everything below
+ * is just the static shell + loading state. */
+.invite-page {
+  padding-top: var(--space-xxl);
+  padding-bottom: var(--space-xxl);
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+}
+
+.invite-card {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.invite-icon {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-large);
+  margin-bottom: var(--space-lg);
+}
+
+.invite-card h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  margin-bottom: var(--space-sm);
+}
+
+.invite-card p {
+  color: var(--color-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.invite-card.is-loading .invite-body-loaded,
+.invite-card:not(.is-loading) .invite-spinner {
+  display: none;
+}
+
+.invite-spinner {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto var(--space-lg);
+  border: 3px solid var(--color-divider);
+  border-top-color: var(--color-accent);
+  border-radius: 50%;
+  animation: btn-spin 0.7s linear infinite;
+}
+
+.invite-stores {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.store-btn {
+  width: 100%;
+}
+
+.store-btn .store-btn-icon {
+  width: 20px;
+  height: 20px;
+  flex: none;
+}
+
+.store-btn-label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.2;
+}
+
+.store-btn-label small {
+  font-size: 0.7rem;
+  opacity: 0.85;
+}
+
+/* Placeholder state: buttons render but do nothing meaningful yet (no
+ * href target — see js/invite.js) until real App Store / Play Store URLs
+ * are wired in post-launch. Visually distinct so it's obvious in review. */
+.store-btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.invite-open-app {
+  font-size: 0.9rem;
+}
+
+@media (min-width: 480px) {
+  .invite-stores {
+    flex-direction: row;
+  }
+}
