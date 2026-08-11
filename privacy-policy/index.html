@@ -47,10 +47,10 @@
             height="44">Nasab</a>
       </div>
       <div class="site-header-right">
-        <a class="btn btn-outline" href="/#waitlist">Join the waitlist</a>
         <nav class="site-nav">
           <a href="/founders-note/">Founder's Note</a>
         </nav>
+        <a class="btn btn-outline" href="/#waitlist">Join the waitlist</a>
       </div>
     </div>
   </header>
@@ -62,7 +62,7 @@
         <a class="legal-back" href="/">&larr; Back to Nasab</a>
 
         <h1>Privacy Policy for Nasab</h1>
-        <p><strong>Last updated:</strong> July 27, 2026</p>
+        <p><strong>Last updated:</strong> August 11, 2026</p>
         <p>TappStudio ("TappStudio," "we," "us," or "our") operates the Nasab mobile application (the "App"), a family archive and genealogy service that helps families preserve stories, photos, voice notes, videos, and lineage across generations. This Privacy Policy explains what information we collect, how we use it, who we share it with, and the choices and rights available to you.</p>
         <p>By creating an account or otherwise using Nasab, you agree to the collection and use of information described in this Privacy Policy. If you do not agree, please do not use the App.</p>
         <hr />
@@ -80,7 +80,8 @@
         <li><strong>Account information:</strong> name, email address, password (authentication is handled securely and we do not store your password in plain text), profile photo, date of birth, and gender, collected during registration and onboarding.</li>
         <li><strong>Family and relationship data:</strong> family member names, dates of birth and death, biographies, relationship links (parent, spouse, sibling, child, etc.), and optional contact details (email, phone number) for family members you add.</li>
         <li><strong>Content you upload:</strong> photographs, videos, voice recordings, documents, timeline events, captions, and comments that you or other Family Space members choose to store in the App.</li>
-        <li><strong>Family Space information:</strong> family name, invite links/codes, and roles assigned to members (e.g., Owner, Admin, Contributor, Viewer).</li>
+        <li><strong>Family Space information:</strong> family name, invite links/codes, and roles assigned to members (Owner or Member).</li>
+        <li><strong>Location information:</strong> a member's current city/country, place of birth, place of burial, and event locations (e.g., where a marriage took place), entered via a place-search field. This is place-level information you or another family member types in — not precise device location.</li>
         <li><strong>Communications:</strong> messages you send us for support, feedback, or feature requests (e.g., via the in-app feedback email).</li>
         </ul>
         <h3>2.2 Information collected automatically</h3>
@@ -94,7 +95,7 @@
         <li>If you choose to sign in using a third-party provider (e.g., Google or Apple Sign-In), we receive basic profile information (name, email address) from that provider as permitted by your settings with them.</li>
         <li>If you subscribe to a paid plan, our subscription management provider (RevenueCat) and the relevant app store (Apple App Store or Google Play) share subscription status and entitlement information with us. We do not receive or store your full payment card details — these are handled entirely by Apple, Google, or their payment processors.</li>
         </ul>
-        <p>We do <strong>not</strong> knowingly collect precise real-time location data, and Nasab does not request location permissions for its core features.</p>
+        <p>We do <strong>not</strong> knowingly collect precise real-time or device (GPS) location data, and Nasab does not request device location permissions for its core features. The place-level location information described in Section 2.1 (e.g., a member's city, place of birth) is entered manually via a place-search field, not derived from your device's location.</p>
         <hr />
         <h2>3. How We Use Information</h2>
         <p>We use the information described above to:</p>
@@ -115,7 +116,7 @@
         <h2>4. How Information Is Shared</h2>
         <p>We share information only in the following circumstances:</p>
         <h3>4.1 With other members of your Family Space</h3>
-        <p>Content and profile information you add is visible to other members of the same Family Space, according to their role (Owner, Admin, Contributor, Viewer, Child) and the permissions configured for that space. Nasab is built around family-level sharing — content is not private to you alone once added to a shared space, unless the App specifically marks it as such.</p>
+        <p>Content and profile information you add is visible to other members of the same Family Space, according to their role (Owner or Member) and the permissions configured for that space. Certain relationship additions to sensitive branches of the tree may be held pending the Owner's approval before becoming visible to the wider Family Space, as described in our Terms of Use. Nasab is built around family-level sharing — content is not private to you alone once added to a shared space, unless the App specifically marks it as such.</p>
         <h3>4.2 With service providers</h3>
         <p>We rely on the following infrastructure and service providers to operate Nasab. Each processes data only as necessary to provide their service to us:</p>
         <div class="table-scroll"><table>
@@ -152,6 +153,11 @@
         <td>Product usage analytics to improve the App</td>
         <td>Device/usage data, in de-identified or aggregated form where possible</td>
         </tr>
+        <tr>
+        <td><strong>Google Places API</strong></td>
+        <td>Place/location search when adding a member's location or an event's location</td>
+        <td>The place-name text you search for; no device location is sent</td>
+        </tr>
         </tbody>
         </table></div>
         <p>We enter into appropriate data protection arrangements with these providers and only share what is necessary for them to perform their function.</p>
@@ -166,7 +172,7 @@
         <li>Media files (photos, videos, voice notes) are stored in <strong>private, access-controlled cloud storage buckets</strong> — never in publicly accessible locations.</li>
         <li>Access to media is granted only via <strong>short-lived, signed URLs</strong> generated after your identity and Family Space membership are verified.</li>
         <li>Family and relationship data is protected using <strong>Row Level Security (RLS)</strong>, ensuring only authenticated members of the same Family Space can query that family's records.</li>
-        <li>We apply role-based permissions (Owner, Admin, Contributor, Viewer, Child) to control who can view, upload, edit, or delete content.</li>
+        <li>We apply role-based permissions (Owner or Member) to control who can view, upload, edit, or delete content.</li>
         <li>No method of electronic transmission or storage is 100% secure, and we cannot guarantee absolute security. You are responsible for keeping your account credentials confidential.</li>
         <li>Our infrastructure providers may process and store data in regions outside your home country (including multi-region cloud storage). By using Nasab, you consent to this international processing and storage of your information, which is carried out under contractual safeguards with our providers.</li>
         </ul>
@@ -190,11 +196,11 @@
         <li><strong>Access</strong> the personal information we hold about you</li>
         <li><strong>Correct</strong> inaccurate or incomplete information</li>
         <li><strong>Delete</strong> your account and associated personal data</li>
-        <li><strong>Export</strong> your data (e.g., family tree export in PDF or GEDCOM format, where available on your plan)</li>
+        <li><strong>Export</strong> your data — dedicated export formats such as PDF or GEDCOM are not currently available but may be introduced in a future release; in the meantime you may contact us at the email in Section 12 to request a copy of your data</li>
         <li><strong>Object to or restrict</strong> certain processing</li>
         <li><strong>Withdraw consent</strong> where processing is based on consent (e.g., optional push notifications)</li>
         </ul>
-        <p>You can exercise most of these rights directly within the App (profile editing, notification settings, account deletion in Settings) or by contacting us at the email address in Section 12. We will respond to verified requests within the timeframe required by applicable law.</p>
+        <p>You can exercise most of these rights directly within the App (profile editing, notification settings, or submitting an account deletion request in Settings, which we review and action) or by contacting us at the email address in Section 12. We will respond to verified requests within the timeframe required by applicable law.</p>
         <p>If you are located in the <strong>European Economic Area (EEA), UK, or Switzerland</strong>, you may also have rights under the GDPR, including the right to lodge a complaint with your local data protection authority.</p>
         <p>If you are a <strong>California resident</strong>, you may have rights under the CCPA/CPRA, including the right to know, delete, and opt out of the sale or sharing of personal information. We do not sell or share personal information as those terms are defined under the CCPA.</p>
         <p>If you are located in <strong>India</strong>, we process your personal data in accordance with the Digital Personal Data Protection Act, 2023, and you may exercise the rights of access, correction, erasure, and grievance redressal described above by contacting us.</p>
