@@ -714,6 +714,20 @@ section {
   padding: var(--space-md) var(--space-lg);
 }
 
+.faq-group-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: var(--space-lg) 0 0;
+}
+
+.faq-group-title:first-child {
+  margin-top: 0;
+}
+
 /* Native <details>/<summary> — keyboard-operable and works without JS, per
    the same "content never stuck without JS" principle as .reveal above. */
 .faq-item summary {

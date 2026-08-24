@@ -1,0 +1,106 @@
+{
+  "faqs": [
+    {
+      "section": "Why Nasab",
+      "questions": [
+        {
+          "question": "Why not just use a family WhatsApp group or Google Photos?",
+          "answer": "A WhatsApp group buries photos under daily chatter, so they're hard to find later. Google Photos lets everyone add photos, but they all sit in one flat album with no sense of who's related to whom. Nasab starts from your family tree instead. Every memory is tagged to the people in it and placed automatically on a timeline of births, marriages, and milestones, so you can find it years later just by looking up the person. It's your family's structured history, not another folder of photos."
+        },
+        {
+          "question": "How is this different from ancestry or genealogy apps?",
+          "answer": "Nasab isn't for searching old records or tracing distant ancestors. It's for the family you already have: the people you're close to, the stories still worth telling, and the voices still worth recording."
+        }
+      ]
+    },
+    {
+      "section": "Getting your family started",
+      "questions": [
+        {
+          "question": "Will this work for relatives who aren't comfortable with technology?",
+          "answer": "Joining takes one tap on an invite link, nothing to type or copy. If the app isn't installed yet, the link sends them to the App Store or Play Store, and their invite is waiting the moment they open the app for the first time. After that, adding a memory is just a photo, a voice note, or a birthday. No manual logging, no upkeep."
+        },
+        {
+          "question": "What if a relative gets the invite link but doesn't have the app yet?",
+          "answer": "They just tap it. The link recognizes their phone, sends them to install Nasab from the App Store or Play Store, and remembers who invited them. Their invite is already filled in the first time they open the app. No code to find or re-enter, even after the install."
+        }
+      ]
+    },
+    {
+      "section": "The family tree",
+      "questions": [
+        {
+          "question": "Can more than one person add to the tree?",
+          "answer": "Yes. Everyone you invite gets their own place in the tree and adds their own memories. By default, any member can add or edit anyone else too. On Heritage, an Owner can turn that off and appoint specific Editors instead. Everyone still keeps the ability to edit their own close family: parents, spouse, siblings, and children."
+        },
+        {
+          "question": "What can a Nasab Editor do?",
+          "answer": "An Editor is a trusted helper the family Owner appoints on Heritage. It's never a role you can give yourself. Editors can add or edit any member and relationship in the tree, and review requests to join through marriage alongside the Owner. It's for families who'd rather keep tree edits in a few trusted hands instead of leaving them open to everyone."
+        },
+        {
+          "question": "Can anyone add anyone to the tree?",
+          "answer": "Not without oversight. When someone joins the tree through marriage and starts adding their own relatives, those additions are held for the family Owner, or an appointed Editor on Heritage, to approve before they become visible. That way, no one's story gets added to your family's archive without your say."
+        },
+        {
+          "question": "Can I include family members who've passed away?",
+          "answer": "Yes. Mark a member as deceased, and their place in the tree, their timeline, their memories, and any voice notes they left behind stay exactly where they are, visible to the family for good."
+        },
+        {
+          "question": "Does the family tree support multiple or past spouses?",
+          "answer": "Yes. Adding a second wife to a husband is simple: just add another spouse from the husband's profile. Adding a second husband to a wife works a little differently, since Nasab keeps one marriage active at a time on the wife's side: mark the previous husband as a past marriage first by long pressing his avatar on the wife's profile, then add the new spouse as usual."
+        }
+      ]
+    },
+    {
+      "section": "Memories & the archive",
+      "questions": [
+        {
+          "question": "How do the gentle nudges work?",
+          "answer": "Nasab notices when something's missing, like a parent not yet added or a voice not yet recorded, and gently reminds you to fill it in, so your family's story stays complete."
+        },
+        {
+          "question": "Will I be reminded about birthdays and anniversaries?",
+          "answer": "Yes. Upcoming birthdays and anniversaries for everyone in the family show right on your home screen, and you also get a push notification on the day itself, so none slip by."
+        },
+        {
+          "question": "Can I add old, printed photos to our archive?",
+          "answer": "Yes. Nasab can scan a physical photo straight into the archive, straightening and cropping it for you. It becomes a normal memory alongside everything else, tagged to the people in it."
+        },
+        {
+          "question": "Can I export our family tree?",
+          "answer": "Yes. From the tree screen, export a printable, poster-style PDF of your tree, or a GEDCOM file compatible with other genealogy tools like Ancestry, FamilySearch, and MyHeritage. Share either one straight from your phone."
+        }
+      ]
+    },
+    {
+      "section": "Privacy & access",
+      "questions": [
+        {
+          "question": "Who can see our family's memories?",
+          "answer": "Only the people you invite to your family's Nasab. Every memory is stored securely. You can share an album with the whole family, or keep it visible to just the people you choose."
+        },
+        {
+          "question": "What happens if someone wants to leave the family archive?",
+          "answer": "They can leave at any time, and nothing they've contributed is deleted. Their memories, comments, and profile stay part of the family's story. An Owner can't leave without deleting the family outright, since there's no way to transfer ownership yet."
+        }
+      ]
+    },
+    {
+      "section": "Plans & pricing",
+      "questions": [
+        {
+          "question": "Does everyone in my family need their own subscription?",
+          "answer": "No, one subscription covers everyone you invite. They join, view, and contribute for free."
+        },
+        {
+          "question": "What's the difference between Nasab Roots and Nasab Heritage?",
+          "answer": "The tree itself is never limited on either plan. Every generation, unlimited members. Heritage adds more shared storage, higher upload quality, voice notes, video memories, the radial tree view, unlimited albums, and the option to appoint Editors to help manage the tree."
+        },
+        {
+          "question": "What happens to our archive if we cancel Heritage?",
+          "answer": "Nothing is deleted. Your tree and memories stay exactly as they are. Some Heritage features, like voice notes, video, the radial view, and unlimited albums, are simply paused until you upgrade again."
+        }
+      ]
+    }
+  ]
+}
