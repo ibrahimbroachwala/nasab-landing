@@ -73,6 +73,31 @@
       ]
     },
     {
+      "section": "Language & the Hijri calendar",
+      "questions": [
+        {
+          "question": "Can I use Nasab in Arabic?",
+          "answer": "Yes. Open Settings, then Language, and choose العربية. The whole app switches to Arabic straight away, with no restart, and the layout flips to right-to-left. Nasab opens in English the first time; you can switch back and forth whenever you like, and your choice is remembered on that device."
+        },
+        {
+          "question": "What does the Hijri Dates switch do?",
+          "answer": "When you turn on Hijri Dates in Family Settings, every date in the app, births, marriages, memories, and the timeline, shows its Islamic-calendar equivalent under the ordinary date. Dates are always stored as regular Gregorian dates; the Hijri version is only shown alongside. It's a per-device preference: turning it on or off changes only your own phone, not what other family members see."
+        },
+        {
+          "question": "Which Hijri calendar does Nasab use?",
+          "answer": "You can choose between two. Misri (Fatimid) is a fixed tabular calendar, calculated the same way every year with no moon-sighting adjustments, and is the one Dawoodi Bohra communities follow. Umm al-Qura is Saudi Arabia's official calendar. Pick the one your family uses under Family Settings, then Hijri Calendar."
+        },
+        {
+          "question": "Who picks the Hijri calendar type for our family?",
+          "answer": "That's a family-wide setting, and only the family Owner can change it, so everyone sees Hijri dates in the same system. Other members can see which calendar is selected but can't change it. It's separate from the Hijri Dates on/off switch, which each person controls for their own device."
+        },
+        {
+          "question": "Why does an older date sometimes show no Hijri equivalent?",
+          "answer": "The Umm al-Qura calendar is only defined for roughly 1937 to 2077. For dates outside that window, an ancestor born in the 1800s, say, Nasab leaves the Hijri line off rather than showing an unreliable conversion. The Misri (Fatimid) calendar has no such limit and works for any year."
+        }
+      ]
+    },
+    {
       "section": "Privacy & access",
       "questions": [
         {

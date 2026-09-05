@@ -1151,6 +1151,30 @@ section {
   .hero-cta-row {
     flex-direction: column;
   }
+
+  /* Store badges: keep them in a left-aligned row and give each an equal
+   * box so the differing official artwork proportions don't read as
+   * mismatched sizes. The art is centred inside its box via object-fit,
+   * never stretched or recoloured. */
+  .hero-cta-row.store-badges {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .hero-cta-row.store-badges .store-badge-link {
+    flex: 1 1 0;
+    max-width: 170px;
+    justify-content: center;
+  }
+
+  .hero-cta-row.store-badges .store-badge {
+    width: 100%;
+    height: 44px;
+    object-fit: contain;
+    object-position: center;
+  }
 }
 
 /* Respect reduced motion */
