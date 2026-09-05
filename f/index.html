@@ -47,7 +47,7 @@
           </picture>Nasab</a>
       </div>
       <div class="site-header-right">
-        <a class="btn btn-outline" href="/#waitlist">Join the waitlist</a>
+        <a class="btn btn-outline" href="/#download">Download Nasab</a>
       </div>
     </div>
   </header>
@@ -67,32 +67,18 @@
             <h1 id="invite-title">Loading your invite&hellip;</h1>
             <p id="invite-body">Just a moment.</p>
 
-            <div class="invite-stores">
-              <!-- TODO: point at the real App Store / Play Store listing
-                   URLs once Nasab is published — see js/invite.js. -->
-              <a id="invite-app-store" class="btn btn-outline store-btn" href="#" aria-disabled="true">
-                <svg class="store-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 3v12" />
-                  <path d="m7 10 5 5 5-5" />
-                  <path d="M5 21h14" />
-                </svg>
-                <span class="store-btn-label">
-                  <small>Download on the</small>
-                  App Store
-                </span>
+            <div class="store-badges">
+              <a id="invite-app-store" class="store-badge-link"
+                href="https://apps.apple.com/us/app/nasab-the-family-archive/id6793519541"
+                aria-label="Download Nasab on the App Store">
+                <img class="store-badge" src="../assets/app-store-badge.svg" alt="Download on the App Store"
+                  width="120" height="40">
               </a>
-              <a id="invite-play-store" class="btn btn-outline store-btn" href="#" aria-disabled="true">
-                <svg class="store-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 3v12" />
-                  <path d="m7 10 5 5 5-5" />
-                  <path d="M5 21h14" />
-                </svg>
-                <span class="store-btn-label">
-                  <small>GET IT ON</small>
-                  Google Play
-                </span>
+              <a id="invite-play-store" class="store-badge-link"
+                href="https://play.google.com/store/apps/details?id=in.tappstudio.nasab"
+                aria-label="Get Nasab on Google Play">
+                <img class="store-badge" src="../assets/google-play-badge.png" alt="Get it on Google Play"
+                  width="135" height="40">
               </a>
             </div>
 

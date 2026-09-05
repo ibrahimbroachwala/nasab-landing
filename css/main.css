@@ -771,70 +771,67 @@ section {
   margin-bottom: 0;
 }
 
-/* ---------- Waitlist ---------- */
-.waitlist {
+/* ---------- Download ---------- */
+.download {
   text-align: center;
 }
 
-.waitlist .container {
+.download .container {
   max-width: 560px;
 }
 
-.waitlist-form {
+/* ---------- Store badges ----------
+ * Shared by the hero, the download section, and the /f/ invite page.
+ * Badges render at official artwork proportions — never stretched or
+ * recolored — so only their height is set; width follows naturally. */
+.store-badges {
   display: flex;
-  gap: var(--space-sm);
-  margin-top: var(--space-lg);
   flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
   justify-content: center;
 }
 
-.waitlist-form input[type="email"] {
-  flex: 1 1 260px;
-  padding: var(--space-md);
-  border-radius: var(--radius-large);
-  border: 1px solid var(--color-divider);
-  background: var(--color-vintage-white);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  color: var(--color-primary);
-  outline: none;
-  transition: border-color var(--motion-fast) var(--ease-standard);
+.hero-cta-row.store-badges {
+  justify-content: flex-start;
 }
 
-.waitlist-form input[type="email"]:focus {
-  border-color: var(--color-accent);
+.store-badge-link {
+  display: inline-flex;
+  transition: transform var(--motion-fast) var(--ease-standard),
+    opacity var(--motion-fast) var(--ease-standard);
 }
 
-/* Honeypot — hidden from real users, present for bots */
-.hp-field {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
+.store-badge-link:hover {
+  opacity: 0.85;
 }
 
-.form-message {
-  margin-top: var(--space-md);
-  min-height: 1.2em;
-  font-size: 0.95rem;
-  opacity: 0;
-  transform: translateY(4px);
-  transition: opacity var(--motion-medium) var(--ease-entrance),
-    transform var(--motion-medium) var(--ease-entrance);
+.store-badge-link:active {
+  transform: scale(0.97);
 }
 
-.form-message.visible {
-  opacity: 1;
-  transform: translateY(0);
+.store-badge-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
-.form-message.success {
-  color: var(--color-success);
+/* Non-destructive platform-highlight hook for /f/ (see js/invite.js) — the
+ * badge art itself is never recolored per Apple/Google brand guidelines,
+ * so the wrapping link is scaled up slightly instead. */
+.store-badge-link.is-recommended {
+  transform: scale(1.05);
 }
 
-.form-message.error {
-  color: var(--color-error);
+.store-badge {
+  display: block;
+  height: 48px;
+  width: auto;
+}
+
+@media (max-width: 480px) {
+  .store-badge {
+    height: 44px;
+  }
 }
 
 /* ---------- Footer ---------- */
@@ -1147,21 +1144,12 @@ section {
 
 @media (max-width: 480px) {
 
-  .hero-cta-row .btn,
-  .waitlist-form .btn {
+  .hero-cta-row .btn {
     width: 100%;
   }
 
   .hero-cta-row {
     flex-direction: column;
-  }
-
-  .waitlist-form {
-    flex-direction: column;
-  }
-
-  .waitlist-form input[type="email"] {
-    flex: 1 1 auto;
   }
 }
 
@@ -1173,7 +1161,7 @@ section {
 
   .reveal,
   .btn,
-  .form-message {
+  .store-badge-link {
     transition: none;
   }
 
@@ -1239,49 +1227,10 @@ section {
   animation: btn-spin 0.7s linear infinite;
 }
 
-.invite-stores {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+.invite-card .store-badges {
   margin-bottom: var(--space-lg);
-}
-
-.store-btn {
-  width: 100%;
-}
-
-.store-btn .store-btn-icon {
-  width: 20px;
-  height: 20px;
-  flex: none;
-}
-
-.store-btn-label {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1.2;
-}
-
-.store-btn-label small {
-  font-size: 0.7rem;
-  opacity: 0.85;
-}
-
-/* Placeholder state: buttons render but do nothing meaningful yet (no
- * href target — see js/invite.js) until real App Store / Play Store URLs
- * are wired in post-launch. Visually distinct so it's obvious in review. */
-.store-btn[aria-disabled="true"] {
-  opacity: 0.6;
-  cursor: default;
 }
 
 .invite-open-app {
   font-size: 0.9rem;
-}
-
-@media (min-width: 480px) {
-  .invite-stores {
-    flex-direction: row;
-  }
 }

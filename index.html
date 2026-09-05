@@ -76,7 +76,7 @@
         <nav class="site-nav">
           <a href="/founders-note/">Founder's Note</a>
         </nav>
-        <a class="btn btn-outline" href="#waitlist">Join the waitlist</a>
+        <a class="btn btn-outline" href="#download">Download Nasab</a>
       </div>
     </div>
   </header>
@@ -98,8 +98,17 @@
           <p class="eyebrow">A living family archive</p>
           <h1>Preserve your family's story.</h1>
           <p class="hero-positioning">Not a record to search. A story to keep adding to.</p>
-          <div class="hero-cta-row">
-            <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
+          <div class="hero-cta-row store-badges">
+            <a class="store-badge-link" href="https://apps.apple.com/us/app/nasab-the-family-archive/id6793519541"
+              aria-label="Download Nasab on the App Store">
+              <img class="store-badge" src="assets/app-store-badge.svg" alt="Download on the App Store" width="120"
+                height="40">
+            </a>
+            <a class="store-badge-link" href="https://play.google.com/store/apps/details?id=in.tappstudio.nasab"
+              aria-label="Get Nasab on Google Play">
+              <img class="store-badge" src="assets/google-play-badge.png" alt="Get it on Google Play" width="135"
+                height="40">
+            </a>
           </div>
         </div>
       </div>
@@ -452,8 +461,8 @@
             </dl>
           </div>
         </div>
-        <p class="pricing-note">Heritage pricing is being finalized. Join the waitlist and we'll let you know as
-          soon as it's live.</p>
+        <p class="pricing-note">Heritage pricing is being finalized. We'll let you know in the app as soon as it's
+          live.</p>
         <!-- REVIEW: a 14-day Heritage free trial exists in the app's subscription config (trial_ends_at, Home
              Trial Nudge card), but no trial length/eligibility is stated on this page — confirm the real terms
              before adding trial copy here or to the Heritage plan card. -->
@@ -633,25 +642,25 @@
       </div>
     </section>
 
-    <!-- Waitlist -->
-    <section class="waitlist" id="waitlist">
+    <!-- Download -->
+    <section class="download" id="download">
       <div class="container">
-        <p class="eyebrow">Coming soon to iPhone and Android</p>
-        <h2>Be the first to know when Nasab is ready.</h2>
-        <p>No spam, no noise, just a note when it's time to start your family's archive.</p>
+        <p class="eyebrow">Available now on iPhone and Android</p>
+        <h2>Nasab is live. Start your family's archive today.</h2>
+        <p>Download the app and add your first branch in minutes.</p>
 
-        <form class="waitlist-form" id="waitlist-form" novalidate>
-          <label class="hp-field" for="company" aria-hidden="true">Company</label>
-          <input class="hp-field" type="text" id="company" name="company" tabindex="-1" autocomplete="off">
-
-          <label class="sr-only" for="email">Email address</label>
-          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
-          <button class="btn btn-primary" type="submit">
-            <span class="btn-spinner" aria-hidden="true"></span>
-            <span class="btn-label">Join the waitlist</span>
-          </button>
-        </form>
-        <p class="form-message" id="waitlist-message" role="status" aria-live="polite"></p>
+        <div class="store-badges">
+          <a class="store-badge-link" href="https://apps.apple.com/us/app/nasab-the-family-archive/id6793519541"
+            aria-label="Download Nasab on the App Store">
+            <img class="store-badge" src="assets/app-store-badge.svg" alt="Download on the App Store" width="120"
+              height="40">
+          </a>
+          <a class="store-badge-link" href="https://play.google.com/store/apps/details?id=in.tappstudio.nasab"
+            aria-label="Get Nasab on Google Play">
+            <img class="store-badge" src="assets/google-play-badge.png" alt="Get it on Google Play" width="135"
+              height="40">
+          </a>
+        </div>
       </div>
     </section>
 
@@ -671,7 +680,6 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/main.js"></script>
 </body>
 

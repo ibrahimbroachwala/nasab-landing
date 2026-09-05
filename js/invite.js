@@ -6,20 +6,16 @@
 // the Nasab app repo). Reads ?code= off the URL, looks up the inviting
 // family's name via a public Supabase RPC, and shows store download links.
 //
-// Same Supabase project/anon key as js/main.js's waitlist form — safe to
-// ship client-side: RLS/grants restrict what the anon key can actually do
-// (see supabase/preview_family_invite_public_migration.sql — grants
-// EXECUTE on preview_family_invite_public to `anon` only, and that
-// function returns nothing but a family name + validity flag).
+// Same Supabase project/anon key the app itself uses — safe to ship
+// client-side: RLS/grants restrict what the anon key can actually do (see
+// supabase/preview_family_invite_public_migration.sql — grants EXECUTE on
+// preview_family_invite_public to `anon` only, and that function returns
+// nothing but a family name + validity flag).
 const SUPABASE_URL = 'https://oajrqdeknihhyhzwnswj.supabase.co';
 const SUPABASE_ANON_KEY = 'sb_publishable_TlUh-EwbEjekZMXYkiQPWQ_w939aGAU';
 
-// TODO: replace with the real store listing URLs once Nasab is published —
-// mirrors the `_appStoreId` TODO in the app repo's settings_screen.dart.
-// Until then these buttons render (so the page reads as intended) but
-// don't navigate anywhere (aria-disabled, href left as '#').
-const APP_STORE_URL = '#';
-const PLAY_STORE_URL = '#';
+const APP_STORE_URL = 'https://apps.apple.com/us/app/nasab-the-family-archive/id6793519541';
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=in.tappstudio.nasab';
 
 const card = document.getElementById('invite-card');
 const titleEl = document.getElementById('invite-title');
@@ -34,30 +30,21 @@ function showResult(title, body) {
   card.classList.remove('is-loading');
 }
 
-/* ---------- Highlight the relevant store button ----------
- * Both buttons always show (the link may be opened on a desktop, or by
+/* ---------- Highlight the relevant store badge ----------
+ * Both badges always show (the link may be opened on a desktop, or by
  * someone other than the invitee), but the platform actually being used
- * gets the primary style. Sniffing is best-effort only — defaults to
- * showing both as equally-weighted outline buttons if inconclusive. */
+ * gets a subtle scale-up. Sniffing is best-effort only — defaults to
+ * showing both badges equally weighted if inconclusive. The badge artwork
+ * itself is never recolored or resized per Apple/Google brand guidelines;
+ * only the wrapping link is emphasized (see .is-recommended in main.css). */
 (function highlightPlatform() {
   const ua = window.navigator.userAgent || '';
   if (/iPhone|iPad|iPod/i.test(ua)) {
-    appStoreBtn.classList.replace('btn-outline', 'btn-primary');
+    appStoreBtn.classList.add('is-recommended');
   } else if (/Android/i.test(ua)) {
-    playStoreBtn.classList.replace('btn-outline', 'btn-primary');
+    playStoreBtn.classList.add('is-recommended');
   }
 })();
-
-if (APP_STORE_URL === '#') {
-  appStoreBtn.setAttribute('aria-disabled', 'true');
-} else {
-  appStoreBtn.href = APP_STORE_URL;
-}
-if (PLAY_STORE_URL === '#') {
-  playStoreBtn.setAttribute('aria-disabled', 'true');
-} else {
-  playStoreBtn.href = PLAY_STORE_URL;
-}
 
 const params = new URLSearchParams(window.location.search);
 const code = (params.get('code') || '').trim().toUpperCase();
