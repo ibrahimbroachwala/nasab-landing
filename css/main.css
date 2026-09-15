@@ -532,16 +532,15 @@ section {
   text-align: center;
 }
 
-/* Each plan is a self-contained card (emblem/name/price, then its own
+/* A single self-contained plan card (emblem/name/price, then its own
    label:value feature list) instead of a shared row-header + N value
-   columns. Side by side on desktop, stacks cleanly at any width without
-   needing to track which column you're reading — see the tablet/phone
-   breakpoints below for the stacking rule. */
+   columns. Centered at any width — see the phone breakpoint below for
+   the side padding rule. */
 .pricing-table {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-lg);
-  align-items: start;
+  grid-template-columns: 1fr;
+  max-width: 420px;
+  margin: 0 auto;
 }
 
 .plan-card {
@@ -555,14 +554,8 @@ section {
 .plan-card-head {
   text-align: center;
   padding: var(--space-lg) var(--space-md);
-  /* Heritage-only darker brown, distinct from --color-primary now that
-     Roots reuses --color-primary below; not a design token since tokens.css
-     mirrors the app repo's palette 1:1. */
+  /* Not a design token since tokens.css mirrors the app repo's palette 1:1. */
   background: #2F2115;
-}
-
-.plan-card-head.roots {
-  background: var(--color-primary);
 }
 
 .plan-card-head img {
@@ -640,8 +633,8 @@ section {
 
 /* ---------- Add-ons ---------- */
 /* Deliberately lighter-weight than .plan-card — no dark head band, no
-   feature checklist — so add-ons read as "more room" bolted onto a plan,
-   not a third subscription tier competing with Roots/Heritage above. */
+   feature checklist — so add-ons read as "more room" bolted onto the plan
+   above, not a second subscription tier. */
 .addon-section {
   margin-top: var(--space-xl);
   text-align: center;
@@ -1104,7 +1097,6 @@ section {
     text-align: center;
   }
 
-  .pricing-table,
   .addon-grid {
     grid-template-columns: 1fr;
   }
