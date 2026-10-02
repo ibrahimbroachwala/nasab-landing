@@ -162,100 +162,154 @@
       </div>
     </section>
 
-    <!-- Feature showcase -->
-    <section class="features">
+    <!-- Icon sprite for the feature tiles and screenshot rail -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+      <symbol id="i-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5.5" cy="19" r="2.5"/><circle cx="18.5" cy="19" r="2.5"/><path d="M12 7.5V12M5.5 16.5V12h13v4.5"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v4M9 21.5h6"/></symbol>
+      <symbol id="i-timeline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v2.5M7 9.5v5M7 18.5V21"/><circle cx="7" cy="7.5" r="2"/><circle cx="7" cy="16.5" r="2"/><path d="M11.5 7.5h8.5M11.5 16.5h6"/></symbol>
+      <symbol id="i-album" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19.5v-15A1.5 1.5 0 0 1 6.5 3H19v15H6.5A1.5 1.5 0 0 0 5 19.5Zm0 0A1.5 1.5 0 0 0 6.5 21H19v-3"/><path d="M9 7.5h6M9 11h4"/></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2.8H7a2 2 0 0 0-2 2v14.4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7.8z"/><path d="M14 2.8v5h5"/><path d="M12 11.5v6M9.4 15l2.6 2.6 2.6-2.6"/></symbol>
+      <symbol id="i-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M5 12v8.5h14V12M12 8v12.5"/><path d="M12 8C10.5 5 7 4.4 7 6.7 7 8 9.5 8 12 8Zm0 0c1.5-3 5-3.6 5-1.3C17 8 14.5 8 12 8Z"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.2"/><path d="M2.8 12h18.4"/><path d="M12 2.8a14 14 0 0 1 0 18.4 14 14 0 0 1 0-18.4Z"/></symbol>
+      <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5v15M6.5 14l5.5 5.5L17.5 14"/></symbol>
+      <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12h15M14 6.5l5.5 5.5L14 17.5"/></symbol>
+      <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19.5 12h-15M10 6.5 4.5 12 10 17.5"/></symbol>
+    </svg>
+
+    <!-- Features: bento grid -->
+    <section class="features" id="features">
       <div class="container">
 
         <div class="section-intro">
           <p class="eyebrow">What Nasab does</p>
-          <h2>One place for your family's whole story</h2>
+          <h2>One place for your family's <span class="accent">whole story</span></h2>
+          <p>From the first branch to the voices worth keeping.</p>
         </div>
 
-        <div class="feature-row reveal">
-          <div class="feature-copy">
-            <div class="feature-number" aria-hidden="true">I</div>
-            <h3>A family tree that keeps growing</h3>
-            <p>Unlimited generations, parents, spouses, and children mapped as your family actually looks, with
-              vertical, horizontal, and radial views. For families who use patronymic naming, Nasab renders it correctly
-              throughout. Each member's profile can also hold where they were born, where they're buried, and where
-              they live today.</p>
-          </div>
-          <div class="feature-media single">
-            <picture>
-              <source srcset="assets/screenshots/4-tree.webp" type="image/webp">
-              <img src="assets/screenshots/4-tree.png" width="1320" height="2868"
-                alt="Nasab family tree screen showing multiple generations of a family" loading="lazy">
-            </picture>
-          </div>
+        <div class="bento reveal">
+          <article class="tile tile-sage t-tree">
+            <svg class="tile-wm" aria-hidden="true"><use href="#i-tree"/></svg>
+            <div class="tile-head">
+              <span class="tile-icon"><svg aria-hidden="true"><use href="#i-tree"/></svg></span>
+              <h3>A family tree that keeps growing</h3>
+            </div>
+            <p>Unlimited generations of parents, spouses, children and siblings, mapped as your family actually looks.
+              Patronymic naming renders correctly throughout, and every profile can hold where they were born, where
+              they're buried, and where they live today.</p>
+            <div class="tile-chips">
+              <span class="chip">Vertical</span><span class="chip">Horizontal</span><span class="chip">Radial</span>
+            </div>
+          </article>
+
+          <article class="tile t-voice">
+            <svg class="tile-wm" aria-hidden="true"><use href="#i-mic"/></svg>
+            <div class="tile-head">
+              <span class="tile-icon"><svg aria-hidden="true"><use href="#i-mic"/></svg></span>
+              <h3>A voice, not just a memory</h3>
+            </div>
+            <p>Record your elders telling their stories, so the way they sounded is never lost to time.</p>
+            <p class="voice-quote">&ldquo;Tell me about the day you got married.&rdquo;</p>
+            <div class="voice-arrow"><svg aria-hidden="true"><use href="#i-arrow-down"/></svg></div>
+            <div class="voice-row">
+              <svg aria-hidden="true"><use href="#i-mic"/></svg>
+              <span>Nani, in her own words</span>
+              <span class="voice-len">4:12</span>
+            </div>
+          </article>
+
+          <article class="tile tile-burgundy t-timeline">
+            <svg class="tile-wm" aria-hidden="true"><use href="#i-timeline"/></svg>
+            <div class="tile-head">
+              <span class="tile-icon"><svg aria-hidden="true"><use href="#i-timeline"/></svg></span>
+              <h3>A timeline that writes itself</h3>
+            </div>
+            <p>Births, marriages and passings arrange themselves year by year as you build the tree. No manual
+              logging, no upkeep.</p>
+          </article>
+
+          <article class="tile t-memories">
+            <svg class="tile-wm" aria-hidden="true"><use href="#i-album"/></svg>
+            <div class="tile-head">
+              <span class="tile-icon"><svg aria-hidden="true"><use href="#i-album"/></svg></span>
+              <h3>Albums bound like keepsakes</h3>
+            </div>
+            <p>Photos and videos tagged to the people in them. Family can react and comment, so a memory starts a
+              conversation.</p>
+            <div class="tile-chips">
+              <span class="chip">Photos</span><span class="chip">Videos</span><span class="chip">Comments</span>
+            </div>
+          </article>
+
+          <article class="tile t-export">
+            <svg class="tile-wm" aria-hidden="true"><use href="#i-file"/></svg>
+            <div class="tile-head">
+              <span class="tile-icon"><svg aria-hidden="true"><use href="#i-file"/></svg></span>
+              <h3>Print it, pass it on</h3>
+            </div>
+            <p>Export the whole tree as a printable poster, or as GEDCOM for any genealogy tool.</p>
+            <div class="tile-chips">
+              <span class="chip">PDF poster</span><span class="chip">GEDCOM</span>
+            </div>
+          </article>
+
+          <article class="tile t-celebrate">
+            <svg class="tile-wm" aria-hidden="true"><use href="#i-gift"/></svg>
+            <div class="tile-head">
+              <span class="tile-icon"><svg aria-hidden="true"><use href="#i-gift"/></svg></span>
+              <h3>Never miss a celebration</h3>
+              <span class="tag">New</span>
+            </div>
+            <p>Upcoming birthdays and anniversaries for the whole family, right on your home screen. Send a wish in
+              the app, or share it as a card on WhatsApp, Instagram or the family group.</p>
+            <div class="tile-chips">
+              <span class="chip">Birthdays</span><span class="chip">Anniversaries</span><span class="chip">Wish
+                cards</span>
+            </div>
+          </article>
+
+          <article class="tile tile-walnut t-lang">
+            <svg class="tile-wm" aria-hidden="true"><use href="#i-globe"/></svg>
+            <div class="tile-head">
+              <span class="tile-icon"><svg aria-hidden="true"><use href="#i-globe"/></svg></span>
+              <h3>Your language. Your calendar.</h3>
+            </div>
+            <p>Use Nasab in English or Arabic, with a full right-to-left layout. Turn on Hijri dates to see every date
+              in Misri (Fatimid) or Umm al-Qura alongside the Gregorian.</p>
+            <div class="tile-chips">
+              <span class="chip">English</span><span class="chip" lang="ar">العربية</span><span class="chip">Hijri
+                dates</span>
+            </div>
+          </article>
         </div>
 
-        <div class="feature-row reverse reveal">
-          <div class="feature-copy">
-            <div class="feature-number" aria-hidden="true">II</div>
-            <h3>A timeline that writes itself</h3>
-            <p>Births, marriages, and deaths are placed on a chronological timeline automatically as you add them,
-              with no manual event logging and no upkeep. Just a quiet record of when everything happened.</p>
-          </div>
-          <div class="feature-media single">
-            <picture>
-              <source srcset="assets/screenshots/5-timeline.webp" type="image/webp">
-              <img src="assets/screenshots/5-timeline.png" width="1320" height="2868"
-                alt="Nasab timeline screen showing family life events year by year" loading="lazy">
-            </picture>
-          </div>
-        </div>
+      </div>
+    </section>
 
-        <div class="feature-row reveal">
-          <div class="feature-copy">
-            <div class="feature-number" aria-hidden="true">III</div>
-            <h3>Albums bound like keepsakes</h3>
-            <p>Photos and videos, captioned and tagged to the people in them, organized into themed albums.
-              Some memories are for everyone; others, you choose who sees. Family can comment and react to what's
-              shared, so a memory doesn't just sit in an album, it starts a conversation.</p>
-          </div>
-          <div class="feature-media single">
-            <picture>
-              <source srcset="assets/screenshots/3-albums.webp" type="image/webp">
-              <img src="assets/screenshots/3-albums.png" width="1320" height="2868"
-                alt="Nasab memory albums screen, shown as leather-bound album covers" loading="lazy">
-            </picture>
-          </div>
+    <!-- Screenshots: horizontal snap rail -->
+    <section class="gallery" id="screenshots">
+      <div class="container">
+        <div class="section-intro">
+          <p class="eyebrow">See it in action</p>
+          <h2>A closer look at <span class="accent">Nasab</span></h2>
+          <p>Tap any screen to see it up close.</p>
+          <p class="rail-hint">Swipe to browse <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow-right"/></svg></p>
         </div>
-
-        <div class="feature-row reverse reveal">
-          <div class="feature-copy">
-            <div class="feature-number" aria-hidden="true">IV</div>
-            <h3>A voice, not just a memory</h3>
-            <p>Record and preserve voice notes from the people in your family, so the way they sounded, and the
-              way they told a story, is never lost to time.</p>
-          </div>
-          <div class="feature-media single">
-            <picture>
-              <source srcset="assets/screenshots/2-voice-notes.webp" type="image/webp">
-              <img src="assets/screenshots/2-voice-notes.png" width="1320" height="2868"
-                alt="Nasab voice note recording screen for preserving a family member's voice" loading="lazy">
-            </picture>
-          </div>
-        </div>
-
-        <div class="feature-row reveal">
-          <div class="feature-copy">
-            <div class="feature-number" aria-hidden="true">V</div>
-            <h3>A gentle nudge, never a chore</h3>
-            <p>Nasab notices when a branch of your family is missing (a parent not yet added, a voice not yet
-              recorded) and quietly nudges you to fill it in. It also keeps an eye on what's coming: birthdays
-              and anniversaries, so none slip by unnoticed.</p>
-          </div>
-          <div class="feature-media single">
-            <picture>
-              <source srcset="assets/screenshots/6-home-nudges.webp" type="image/webp">
-              <img src="assets/screenshots/6-home-nudges.png" width="1320" height="2868"
-                alt="Nasab home screen showing a gentle nudge to add a family member and a list of upcoming celebrations"
-                loading="lazy">
-            </picture>
-          </div>
-        </div>
-
+      </div>
+      <div class="rail" id="rail">
+        <button class="shot" type="button" aria-label="Enlarge: Your family tree, a living archive"><img src="assets/shots/01-hero.webp" alt="Nasab family tree laid over a photo of a grandson and grandmother, with the caption: Your family tree, a living archive" width="660" height="1434" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" aria-label="Enlarge: Family tree in vertical, horizontal and radial layouts"><img src="assets/shots/02-tree.webp" alt="Family tree screen with vertical, horizontal and radial layout options" width="660" height="1434" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" aria-label="Enlarge: Memory albums with photos tagged to people"><img src="assets/shots/03-memories.webp" alt="Memories screen with themed albums and a tagged family photo" width="660" height="1434" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" aria-label="Enlarge: Recording a family member's voice"><img src="assets/shots/04-voice.webp" alt="Voice recording screen preserving a grandmother's story in her own voice" width="660" height="1434" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" aria-label="Enlarge: Family timeline with Hijri dates"><img src="assets/shots/05-timeline.webp" alt="Timeline of births, weddings and passings year by year, with Hijri dates" width="660" height="1434" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" aria-label="Enlarge: Upcoming birthdays and anniversaries"><img src="assets/shots/06-celebrations.webp" alt="Upcoming celebrations list with a birthday reminder notification" width="660" height="1434" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" aria-label="Enlarge: Sending an anniversary wish card"><img src="assets/shots/07-wishes.webp" alt="Anniversary wish card with options to share on WhatsApp, Instagram or the family group" width="660" height="1434" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" aria-label="Enlarge: Scanning an old printed photo"><img src="assets/shots/08-scan.webp" alt="Scanning an old printed photo, automatically cropped and straightened" width="660" height="1434" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" aria-label="Enlarge: Exporting the tree as a PDF poster or GEDCOM"><img src="assets/shots/09-export.webp" alt="Exporting the family tree as a printable PDF poster or a GEDCOM file" width="660" height="1434" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" aria-label="Enlarge: Inviting family with a private code"><img src="assets/shots/10-private.webp" alt="Invite Family screen sharing a private code, visible only to family" width="660" height="1434" loading="lazy" decoding="async"></button>
+      </div>
+      <div class="container rail-controls">
+        <button class="rail-btn" type="button" data-rail="-1" aria-label="Previous screenshots"><svg aria-hidden="true"><use href="#i-arrow-left"/></svg></button>
+        <button class="rail-btn" type="button" data-rail="1" aria-label="Next screenshots"><svg aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
       </div>
     </section>
 
@@ -663,6 +717,11 @@
       <p>&copy; <span id="year"></span> Nasab. All rights reserved.</p>
     </div>
   </footer>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close preview">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
 
   <script src="js/main.js"></script>
 </body>

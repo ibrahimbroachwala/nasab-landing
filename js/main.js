@@ -73,3 +73,64 @@ document.getElementById('year').textContent = new Date().getFullYear();
 
   observer.observe(section);
 })();
+
+/* ---------- Screenshot rail + lightbox ----------
+ * Each .shot is a button that opens its image in a full-screen preview.
+ * Focus moves to the close button while it's open and returns to the shot
+ * afterwards. The desktop arrow buttons page the rail by one viewport. */
+(function () {
+  const rail = document.getElementById('rail');
+  const box = document.getElementById('lightbox');
+  const img = document.getElementById('lightboxImg');
+  const close = document.getElementById('lightboxClose');
+  if (!rail || !box || !img || !close) return;
+  let last = null;
+
+  function open(src, alt, trigger) {
+    last = trigger;
+    img.src = src;
+    img.alt = alt || '';
+    box.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    close.focus();
+  }
+
+  function hide() {
+    box.classList.remove('open');
+    img.src = '';
+    document.body.style.overflow = '';
+    if (last) { last.focus(); last = null; }
+  }
+
+  rail.querySelectorAll('.shot').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      const i = btn.querySelector('img');
+      open(i.currentSrc || i.src, i.alt, btn);
+    });
+  });
+
+  close.addEventListener('click', hide);
+  box.addEventListener('click', function (e) { if (e.target === box) hide(); });
+  document.addEventListener('keydown', function (e) {
+    if (!box.classList.contains('open')) return;
+    if (e.key === 'Escape') hide();
+    // Only the close button is focusable inside the dialog, so keep focus on it.
+    if (e.key === 'Tab') { e.preventDefault(); close.focus(); }
+  });
+
+  const buttons = document.querySelectorAll('[data-rail]');
+  function syncButtons() {
+    const max = rail.scrollWidth - rail.clientWidth - 2;
+    buttons.forEach(function (b) {
+      b.disabled = b.dataset.rail === '-1' ? rail.scrollLeft <= 2 : rail.scrollLeft >= max;
+    });
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      rail.scrollBy({ left: Number(b.dataset.rail) * rail.clientWidth * 0.8, behavior: 'smooth' });
+    });
+  });
+  rail.addEventListener('scroll', syncButtons, { passive: true });
+  window.addEventListener('resize', syncButtons);
+  syncButtons();
+})();

@@ -71,11 +71,11 @@ nasab-landing/
 │   ├── tokens.css        — CSS custom properties mirroring lib/styles/ in the app repo exactly
 │   └── main.css           — page layout & components, built on tokens.css
 ├── js/
-│   ├── main.js             — scroll reveal, hero parallax, footer year
+│   ├── main.js             — scroll reveal, hero parallax, screenshot rail + lightbox, footer year
 │   └── invite.js           — /f/ page: reads ?code=, fetches family name, real store badge links
 └── assets/
     ├── brand/              — icon, plan illustrations, copied from the app repo
-    ├── screenshots/         — real App Store marketing screenshots used for feature imagery
+    ├── shots/              — store screenshots for the gallery rail (660×1434 WebP from Nasab/store/screenshots_v2/png)
     ├── app-store-badge.svg — official "Download on the App Store" badge
     └── google-play-badge.png — official "Get it on Google Play" badge
 ```

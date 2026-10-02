@@ -394,83 +394,444 @@ section {
   margin-bottom: 0;
 }
 
-/* ---------- Feature showcase ---------- */
+/* ---------- Features: bento grid ----------
+ * 1 column on phones, 2 on tablets, 6 on desktop (tiles span 3/3, 2/2/2,
+ * 3/3). The tinted tiles borrow the leather tones of the store screenshots
+ * (Nasab/store/screenshots_v2/src/base.css) so the grid and the rail below
+ * read as one set; like the other rgba literals in this file they're UI
+ * surfaces, not new brand tokens. */
 .features {
   background: var(--color-card-surface);
 }
 
-.features .section-intro {
+.features .section-intro,
+.gallery .section-intro {
   max-width: 640px;
   margin: 0 auto var(--space-xxl);
   text-align: center;
 }
 
-.feature-row {
+.features .section-intro h2,
+.gallery .section-intro h2 {
+  text-wrap: balance;
+}
+
+.section-intro > p:not(.eyebrow) {
+  margin: var(--space-sm) 0 0;
+}
+
+.accent {
+  font-family: var(--font-caption);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-accent);
+}
+
+.bento {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: "copy media";
-  column-gap: var(--space-xl);
-  align-items: center;
-  padding: var(--space-sm) 0;
-  /* Lighter than --color-divider (#453A2C) — a subtler row separator than the
-     divider's usual job (card/table borders); rgba literal per this file's
-     "UI necessity, not a brand color" convention rather than a new token. */
-  border-bottom: 0.5px solid rgba(69, 58, 44, 0.5);
-}
-
-.feature-row:last-child {
-  border-bottom: none;
-}
-
-.feature-row.reverse {
-  grid-template-areas: "media copy";
-}
-
-.feature-number {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(4.5rem, 5vw, 5.75rem);
-  line-height: 1;
-  color: var(--color-secondary);
-  opacity: 0.15;
-  margin-bottom: var(--space-xs);
-}
-
-.feature-copy {
-  grid-area: copy;
-}
-
-.feature-media {
-  grid-area: media;
-}
-
-.feature-copy h3 {
-  font-size: 1.6rem;
-  margin-bottom: var(--space-sm);
-}
-
-.feature-copy p {
-  font-size: 1.02rem;
-}
-
-.feature-media {
-  display: flex;
   gap: var(--space-md);
+}
+
+.tile {
+  --tile-fg: var(--color-heading);
+  --tile-text: var(--color-secondary);
+  --tile-accent: var(--color-accent);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: var(--space-lg);
+  background: var(--color-background);
+  border: 1px solid var(--color-divider);
+  border-radius: 18px;
+  box-shadow: var(--shadow-memory-card);
+  transition: transform var(--motion-medium) var(--ease-entrance),
+    border-color var(--motion-medium) var(--ease-entrance);
+}
+
+@media (hover: hover) {
+  .tile:hover {
+    transform: translateY(-3px);
+    border-color: rgba(201, 162, 94, 0.55);
+  }
+}
+
+.tile > * {
+  position: relative;
+  z-index: 1;
+}
+
+.tile h3 {
+  color: var(--tile-fg);
+  font-size: 1.3rem;
+}
+
+.tile p {
+  margin: 0;
+  color: var(--tile-text);
+  font-size: 0.98rem;
+}
+
+.tile-sage {
+  --tile-accent: #D9E3BB;
+  --tile-text: rgba(240, 236, 224, 0.74);
+  background: linear-gradient(160deg, #414C3B 0%, #29301F 100%);
+  border-color: #56644F;
+}
+
+.tile-burgundy {
+  --tile-accent: #F2BCB1;
+  --tile-text: rgba(244, 228, 224, 0.74);
+  background: linear-gradient(160deg, #532A2A 0%, #331818 100%);
+  border-color: #6E3A3A;
+}
+
+.tile-walnut {
+  --tile-accent: #E8CD95;
+  --tile-text: rgba(240, 230, 214, 0.74);
+  background: linear-gradient(160deg, #4B3621 0%, #1F150D 100%);
+  border-color: #5E4630;
+}
+
+/* Oversized watermark icon in the top corner */
+.tile-wm {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 140px;
+  height: 140px;
+  color: var(--tile-accent);
+  opacity: 0.07;
+  transform: rotate(-12deg);
+  z-index: 0;
+}
+
+.tile-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.tile-icon {
+  display: flex;
+  align-items: center;
   justify-content: center;
-}
-
-.feature-media img {
-  height: auto;
+  flex: none;
+  width: 46px;
+  height: 46px;
   border-radius: var(--radius-large);
-  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(201, 162, 94, 0.28);
+  background: rgba(201, 162, 94, 0.12);
+  color: var(--tile-accent);
 }
 
-.feature-media.single img {
-  max-width: 320px;
+.tile-sage .tile-icon,
+.tile-burgundy .tile-icon,
+.tile-walnut .tile-icon {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.feature-media.pair img {
-  max-width: 220px;
+.tile-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.tag {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-background);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.tile-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: auto;
+  padding-top: var(--space-xs);
+}
+
+.chip {
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-divider);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--tile-fg);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.tile-sage .chip,
+.tile-burgundy .chip,
+.tile-walnut .chip {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* Voice tile: the question asked → the recording kept */
+.tile .voice-quote {
+  margin-top: var(--space-xs);
+  padding: 14px 16px;
+  border: 1px solid var(--color-divider);
+  border-radius: 16px 16px 16px 4px;
+  background: var(--color-card-surface);
+  color: var(--color-heading);
+  font-family: var(--font-caption);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.voice-arrow {
+  display: flex;
+  justify-content: center;
+  color: var(--color-accent);
+}
+
+.voice-arrow svg {
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+}
+
+.voice-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 16px;
+  border-radius: var(--radius-large);
+  background: var(--color-vintage-white);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.voice-row svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  color: var(--color-timeline-accent);
+}
+
+.voice-len {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 620px) {
+  .bento {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .t-lang {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 22px;
+  }
+
+  .t-tree,
+  .t-voice,
+  .t-celebrate,
+  .t-lang {
+    grid-column: span 3;
+  }
+
+  .t-timeline,
+  .t-memories,
+  .t-export {
+    grid-column: span 2;
+  }
+}
+
+/* ---------- Screenshots: horizontal snap rail ----------
+ * The one intentional x-scroller on the page. The rail runs full-bleed but
+ * its first shot lines up with the .container edge (1120px max + 24px
+ * gutter). Shots tilt alternately like prints laid on a table and
+ * straighten on hover. */
+.gallery .section-intro {
+  margin-bottom: var(--space-lg);
+}
+
+.rail {
+  --gutter: max(var(--space-lg), calc((100vw - 1120px) / 2 + var(--space-lg)));
+  display: flex;
+  gap: 18px;
+  padding: var(--space-md) var(--gutter) var(--space-xl);
+  scroll-padding-inline: var(--gutter);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+.shot {
+  flex: none;
+  width: 72vw;
+  max-width: 260px;
+  padding: 0;
+  scroll-snap-align: start;
+  border: 1px solid var(--color-divider);
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--color-card-surface);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.38);
+  cursor: zoom-in;
+  transform: rotate(var(--r, 0deg));
+  transition: transform var(--motion-medium) var(--ease-entrance),
+    border-color var(--motion-medium) var(--ease-entrance);
+}
+
+.shot:nth-child(odd) {
+  --r: -1deg;
+}
+
+.shot:nth-child(even) {
+  --r: 1deg;
+}
+
+.shot img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 660 / 1434;
+}
+
+.shot:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .shot:hover {
+    transform: rotate(0deg) translateY(-4px);
+    border-color: rgba(201, 162, 94, 0.55);
+  }
+}
+
+@media (min-width: 720px) {
+  .rail {
+    gap: 24px;
+  }
+}
+
+.rail-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.rail-hint svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Desktop gets arrow buttons instead of the swipe hint, since a mouse
+   can't swipe the rail. */
+.rail-controls {
+  display: none;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.rail-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-accent);
+  background: transparent;
+  color: var(--color-accent);
+  cursor: pointer;
+  transition: background-color var(--motion-fast) var(--ease-standard),
+    opacity var(--motion-fast) var(--ease-standard);
+}
+
+.rail-btn:hover {
+  background: rgba(201, 162, 94, 0.1);
+}
+
+.rail-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.rail-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+@media (min-width: 1024px) {
+  .rail-hint {
+    display: none;
+  }
+
+  .rail-controls {
+    display: flex;
+  }
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  background: rgba(10, 7, 5, 0.94);
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: min(92vw, 420px);
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  border: 1px solid var(--color-divider);
+  border-radius: 22px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 50%;
+  background: var(--color-background);
+  color: var(--color-accent);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
 }
 
 /* ---------- Value props ---------- */
@@ -1089,14 +1450,6 @@ section {
     padding-bottom: var(--space-xl);
   }
 
-  .feature-row,
-  .feature-row.reverse {
-    grid-template-columns: 1fr;
-    grid-template-areas: "copy" "media";
-    row-gap: var(--space-sm);
-    text-align: center;
-  }
-
   .addon-grid {
     grid-template-columns: 1fr;
   }
@@ -1177,8 +1530,15 @@ section {
 
   .reveal,
   .btn,
-  .store-badge-link {
+  .store-badge-link,
+  .tile,
+  .shot {
     transition: none;
+  }
+
+  .tile:hover,
+  .shot:hover {
+    transform: none;
   }
 
   .js-reveal-ready .reveal {
